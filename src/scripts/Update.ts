@@ -426,6 +426,19 @@ class Update implements Saveable {
                     || !!saveData.breeding.queueList.find((p) => p == 'Let\'s Go Eevee');
             }
         },
+
+        '0.8.1': ({ playerData, saveData }) => {
+            // Add Weather Institute
+            saveData.statistics.dungeonsCleared = Update.moveIndex(saveData.statistics.dungeonsCleared, 29);
+            // Add Magma Hideout
+            saveData.statistics.dungeonsCleared = Update.moveIndex(saveData.statistics.dungeonsCleared, 32);
+            // Add Aqua Hideout
+            saveData.statistics.dungeonsCleared = Update.moveIndex(saveData.statistics.dungeonsCleared, 33);
+
+            // Update achievement names
+            Update.updateAchievementName(playerData, 'These pokémon must be sick', 'These Pokémon must be sick');
+            Update.updateAchievementName(playerData, 'The earth is like unions', 'The earth is like onions');
+        },
     };
 
     constructor() {
@@ -618,6 +631,14 @@ class Update implements Saveable {
         const end = arr.splice(to);
         arr = [...arr, ...temp, ...end];
         return arr;
+    }
+
+    static updateAchievementName = (playerData, oldName, newName) => {
+        const val = playerData.achievementsCompleted[oldName];
+        if (val != undefined) {
+            playerData.achievementsCompleted[newName] = val;
+            delete playerData.achievementsCompleted[oldName];
+        }
     }
 
     static addPokemonToSaveData = (saveData, pokemonId) => {
