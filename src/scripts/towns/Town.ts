@@ -786,8 +786,8 @@ TownList['Ever Grande City'] = new Town(
         shop: EverGrandeCityShop,
     }
 );
-TownList['Pokemon League Hoenn'] = new Town(
-    'Pokemon League',
+TownList['Pokémon League Hoenn'] = new Town(
+    'Pokémon League',
     GameConstants.Region.hoenn,
     {
         requirements: [
@@ -1145,8 +1145,8 @@ TownList['Sunyshore City'] = new Town(
         shop: SunyshoreCityShop,
     }
 );
-TownList['Pokemon League Sinnoh'] = new Town(
-    'Pokemon League Sinnoh',
+TownList['Pokémon League Sinnoh'] = new Town(
+    'Pokémon League Sinnoh',
     GameConstants.Region.sinnoh,
     {
         requirements: [new ClearDungeonRequirement(1, GameConstants.getDungeonIndex('Victory Road Sinnoh'))],
@@ -1493,6 +1493,7 @@ TownList['Opelucid City'] = new Town(
     {
         requirements: [new RouteKillRequirement(10, GameConstants.Region.unova, 11)],
         shop: OpelucidCityShop,
+        dungeon: dungeonList['Team Plasma Assault'],
     }
 );
 TownList['Humilau City'] = new Town(
@@ -1503,8 +1504,8 @@ TownList['Humilau City'] = new Town(
         npcs: [ExcitedChild],
     }
 );
-TownList['Pokemon League Unova'] = new Town(
-    'Pokemon League Unova',
+TownList['Pokémon League Unova'] = new Town(
+    'Pokémon League Unova',
     GameConstants.Region.unova,
     {
         requirements: [new ClearDungeonRequirement(1, GameConstants.getDungeonIndex('Victory Road Unova'))],
@@ -1633,21 +1634,33 @@ TownList['Reversal Mountain'] = new DungeonTown(
     GameConstants.Region.unova,
     [new GymBadgeRequirement(BadgeEnums.Jet)]
 );
+TownList['Team Plasma Assault'] = new DungeonTown(
+    'Team Plasma Assault',
+    GameConstants.Region.unova,
+    [
+        new GymBadgeRequirement(BadgeEnums.Legend),
+    ]
+);
 TownList['Seaside Cave'] = new DungeonTown(
     'Seaside Cave',
     GameConstants.Region.unova,
     [
         new RouteKillRequirement(10, GameConstants.Region.unova, 24),
-        new GymBadgeRequirement(BadgeEnums.Legend),
+        new ClearDungeonRequirement(1, GameConstants.getDungeonIndex('Team Plasma Assault')),
     ]
 );
-TownList['Giant Chasm'] = new DungeonTown(
-    'Giant Chasm',
+TownList['Plasma Frigate'] = new DungeonTown(
+    'Plasma Frigate',
     GameConstants.Region.unova,
     [
         new RouteKillRequirement(10, GameConstants.Region.unova, 22),
         new GymBadgeRequirement(BadgeEnums.Wave),
     ]
+);
+TownList['Giant Chasm'] = new DungeonTown(
+    'Giant Chasm',
+    GameConstants.Region.unova,
+    [new ClearDungeonRequirement(1, GameConstants.getDungeonIndex('Plasma Frigate'))]
 );
 TownList['Cave of Being'] = new DungeonTown(
     'Cave of Being',
@@ -1788,7 +1801,7 @@ TownList['Lumiose City'] = new Town(
     'Lumiose City',
     GameConstants.Region.kalos,
     {
-        requirements: [new RouteKillRequirement(10, GameConstants.Region.kalos, 3)],
+        requirements: [new RouteKillRequirement(10, GameConstants.Region.kalos, 4)],
         shop: LumioseCityShop,
     }
 );
@@ -1796,7 +1809,7 @@ TownList['Camphrier Town'] = new Town(
     'Camphrier Town',
     GameConstants.Region.kalos,
     {
-        requirements: [new RouteKillRequirement(10, GameConstants.Region.kalos, 4)],
+        requirements: [new RouteKillRequirement(10, GameConstants.Region.kalos, 5)],
     }
 );
 TownList['Ambrette Town'] = new Town(

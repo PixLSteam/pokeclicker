@@ -434,10 +434,20 @@ class Update implements Saveable {
             saveData.statistics.dungeonsCleared = Update.moveIndex(saveData.statistics.dungeonsCleared, 32);
             // Add Aqua Hideout
             saveData.statistics.dungeonsCleared = Update.moveIndex(saveData.statistics.dungeonsCleared, 33);
+            // Add Team Plasma Assault
+            saveData.statistics.dungeonsCleared = Update.moveIndex(saveData.statistics.dungeonsCleared, 72);
+            // Add Plasma Frigate
+            saveData.statistics.dungeonsCleared = Update.moveIndex(saveData.statistics.dungeonsCleared, 74);
 
             // Update achievement names
             Update.updateAchievementName(playerData, 'These pokémon must be sick', 'These Pokémon must be sick');
             Update.updateAchievementName(playerData, 'The earth is like unions', 'The earth is like onions');
+        },
+
+        '0.8.2': ({ playerData, saveData }) => {
+            // Update achievement names
+            Update.updateAchievementName(playerData, 'Doomsday Bunker stocked with Pokeballs!', 'Doomsday Bunker stocked with Pokéballs!');
+            Update.updateAchievementName(playerData, 'Prepared for anything!', 'Professor Oak is the best!');
         },
     };
 
@@ -623,6 +633,9 @@ class Update implements Saveable {
         this.setSettingsData(updateResult.settingsData);
     }
 
+    // Used for moving dungeons and other stuff
+    // Be sure to insert from lowest index to highest index
+    // Example to get dungeons new index: GameConstants.getDungeonIndex('Aqua Hideout')
     static moveIndex = (arr, to, from = Infinity, defaultVal = 0) => {
         let temp = arr.splice(from, 1);
         if (!temp.length) {
